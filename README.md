@@ -8,8 +8,12 @@ Starting the app:
 Endpoints logic
 
 **PATH:**               /v1/numbers
+
 **METHOD:**             GET
+
 **QUERY_PARAMETERS:**   amount [1...10]
+
 **Description:**
+
 _This endpoint returns a JSON of 1 to 10 phone numbers formatted as +47072XXXXXXX where X is a digit between 0 and 9._
 
