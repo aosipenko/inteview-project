@@ -1,6 +1,7 @@
 package se.telenor.interview.service;
 
 import org.springframework.stereotype.Component;
+import se.telenor.interview.dto.SwitchNumbersDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,5 +27,23 @@ public class Numbers {
             stringBuffer.append(RANDOM.nextInt(9));
         }
         return stringBuffer.toString();
+    }
+
+    public SwitchNumbersDto switchNumbers(SwitchNumbersDto switchNumbersDto) {
+        validateNumber(switchNumbersDto.getNewNumber());
+        validateNumber(switchNumbersDto.getOldNumber());
+        return SwitchNumbersDto.builder().newNumber(switchNumbersDto.getNewNumber()).build();
+    }
+
+    private void validateNumber(String number) {
+        if (number.startsWith("+")) {
+            if (!number.startsWith("+47072") || !(number.length() == 13)) {
+                throw new RuntimeException("Bad number formatting!");
+            }
+        } else {
+            if (!number.startsWith("47072") || !(number.length() == 12)) {
+                throw new RuntimeException("Bad number formatting!");
+            }
+        }
     }
 }
